@@ -15,7 +15,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
     }
 
     .card {
@@ -100,9 +99,15 @@
       margin-top: 15px;
     }
 
-    audio {
+    .yt-btn {
+      display: inline-block;
       margin-top: 15px;
-      width: 100%;
+      padding: 12px 20px;
+      background: #ff0000;
+      color: white;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 15px;
     }
   </style></head><body>
   <div class="card">
@@ -126,10 +131,9 @@
 
   <img src="couple.jpg" class="photo" alt="Our photo together">
 
-  <!-- Romantic background music (royalty-free) -->
-  <audio id="music" controls autoplay loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
-  </audio>
+  <a class="yt-btn" href="https://www.youtube.com/results?search_query=sitaare+arijit+singh" target="_blank">
+    ▶ Play Sitaare – Arijit Singh on YouTube
+  </a>
 </div>
 
   </div>  <script>
@@ -139,33 +143,26 @@
     const msg = document.getElementById("successMsg");
     const loveText = document.getElementById("loveText");
 
-    // Make NO button run away (works on MOBILE + DESKTOP)
     function moveNoButton() {
       const maxX = btnArea.offsetWidth - noBtn.offsetWidth;
       const maxY = btnArea.offsetHeight - noBtn.offsetHeight;
-
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
     }
 
-    // Trigger on touch + hover
-    noBtn.addEventListener("touchstart", moveNoButton);
     noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
 
     yesBtn.addEventListener("click", () => {
       btnArea.style.display = "none";
       msg.style.display = "block";
 
       const text = "I love you Anchal ❤️";
-      let index = 0;
-
+      let i = 0;
       const typing = setInterval(() => {
-        loveText.textContent += text[index];
-        index++;
-        if (index === text.length) clearInterval(typing);
+        loveText.textContent += text[i];
+        i++;
+        if (i === text.length) clearInterval(typing);
       }, 120);
     });
   </script></body>
